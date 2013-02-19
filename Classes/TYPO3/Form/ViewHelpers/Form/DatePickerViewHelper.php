@@ -61,7 +61,7 @@ class DatePickerViewHelper extends \TYPO3\Fluid\ViewHelpers\Form\AbstractFormFie
 		$this->tag->addAttribute('type', 'text');
 		$this->tag->addAttribute('name', $name . '[date]');
 		if ($enableDatePicker) {
-			$this->tag->addAttribute('readonly', TRUE);
+			// $this->tag->addAttribute('readonly', TRUE);
 		}
 		$date = $this->getSelectedDate();
 		if ($date !== NULL) {
@@ -84,13 +84,7 @@ class DatePickerViewHelper extends \TYPO3\Fluid\ViewHelpers\Form\AbstractFormFie
 			$content .= '<script type="text/javascript">//<![CDATA[
 				$(function() {
 					$("#' . $id . '").datepicker({
-						dateFormat: "' . $datePickerDateFormat . '"
-					}).keydown(function(e) {
-							// By using "backspace" or "delete", you can clear the datepicker again.
-						if(e.keyCode == 8 || e.keyCode == 46) {
-							e.preventDefault();
-							$.datepicker._clearDate(this);
-						}
+						format: "' . $datePickerDateFormat . '"
 					});
 				});
 				//]]></script>';
@@ -134,7 +128,7 @@ class DatePickerViewHelper extends \TYPO3\Fluid\ViewHelpers\Form\AbstractFormFie
 			'M' => 'M',
 			'n' => 'm',
 
-			'Y' => 'yy',
+			'Y' => 'yyyy',
 			'y' => 'y'
 		);
 		return strtr($dateFormat, $replacements);

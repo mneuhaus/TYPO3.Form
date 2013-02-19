@@ -24,5 +24,17 @@ class DatePicker extends \TYPO3\Form\Core\Model\AbstractFormElement {
 	public function initializeFormElement() {
 		$this->setDataType('DateTime');
 	}
+
+	/**
+	 * @param \TYPO3\Form\Core\Runtime\FormRuntime $formRuntime
+	 * @param mixed $elementValue
+	 * @return void
+	 */
+	public function onSubmit(\TYPO3\Form\Core\Runtime\FormRuntime $formRuntime, &$elementValue) {
+		if (!empty($elementValue['date']) && $elementValue['date'] !== '') {
+		} else {
+			$elementValue['date'] = '';
+		}
+	}
 }
 ?>
